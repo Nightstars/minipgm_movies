@@ -1,18 +1,33 @@
-// pages/profile/profile.js
+// pages/comment/comment.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        detail:{},
+        content:'',
+        value:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options);
+        wx.cloud.callFunction({
+            name:"getDetail",
+            data:{
+                movieid:options.movieid
+            }
+        }).then(res=>{
+            console.log(res);
+            this.setData({
+                detail:JSON.parse(res.result)
+            })
+        }).catch(err=>{
+            console.error(err);
+        })
     },
 
     /**
@@ -63,7 +78,13 @@ Page({
     onShareAppMessage: function () {
 
     },
-    onGotUserInfo:function(event){
-        console.log(event);
-    }
+    onChange(event) {
+        // event.detail 为当前输入的值
+        console.log(event.detail);
+      },
+      onRateChange(event) {
+        this.setData({
+          value: event.detail,
+        });
+      }
 })

@@ -1,1 +1,37 @@
 /* pages/movie/movie.wxss */
+.movie{
+    height: 300rpx;
+    display: flex;
+    padding: 10rpx;
+    border: 1rpx solid #ccc;
+    margin: 10px;
+    border-radius: 15rpx;
+}
+.movie-img{
+    border-radius: 15rpx;
+}
+.movie-info{
+    flex: 1;
+    margin-left: 20rpx;
+}
+.movie-title{
+    color:#666;
+    font-size: 30rpx;
+    font-weight: bolder;
+}
+.movie-source{
+    color:#faaf00;
+    font-weight: bolder;
+}
+.movie-actor{
+    color: #713D99;
+    font-weight: bold;
+}
+.movie-comment{
+    width: 100rpx;
+    height: 50rpx;
+    background: #E54847;
+    color: #fff;
+    font-size: 26rpx;
+    margin-top: 10px;
+}
