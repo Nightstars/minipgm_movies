@@ -5,14 +5,27 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        movieList:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.cloud.callFunction({
+            name:"movielist",
+            data:{
+                start:this.data.movieList.length,
+                count:10
+            }
+        }).then(res=>{
+            console.log(res);
+            this.setData({
+                movieList:this.data.movieList.concat(JSON.parse(res.result).subjects)
+            })
+        }).catch(err=>{
+            console.error(err);
+        });
     },
 
     /**
